@@ -1,0 +1,15 @@
+# ?? ???? ???? ???? application-server.yml ??? ?????.
+# TODO MySQL DB ?? ??? ??? ?????
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: create-drop  # (1) ??? ?? ??
+    show-sql: true      # (2) SQL ?? ??
+    properties:
+      hibernate:
+        format_sql: true  # (3) SQL pretty print
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/v1?useSSL=false&useUnicode=true&serverTimezone=Asia/Seoul
+    username: root
+    password: 1
