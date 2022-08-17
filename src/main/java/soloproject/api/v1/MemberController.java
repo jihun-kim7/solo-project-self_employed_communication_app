@@ -16,34 +16,12 @@ import java.util.List;
 public class MemberController {
 
     private final MemberService memberService;
+    private final MemberMapper mapper;
 
-    public MemberController(MemberService memberService) {
+    public MemberController(MemberService memberService, MemberMapper mapper) {
         this.memberService = memberService;
+        this.mapper = mapper;
     }
-
-    //    @GetMapping("/type/{TypeId}")
-//    public ResponseEntity getMemberByType(
-//            @PathVariable("TypeId") String TypeId) {
-//        Member member = memberService.findMemberByType(TypeId);
-//        return new ResponseEntity<>(member, HttpStatus.OK);
-//    }
-//
-//    @GetMapping("location/{locationId}")
-//    public ResponseEntity getMemberByLocation(
-//            @PathVariable("locationId") String locationId
-//    ) {
-//        Member member = memberService.findMemberByLocation(locationId);
-//        return new ResponseEntity<>(member, HttpStatus.OK);
-//    }
-//
-//    @GetMapping("/type/{TypeId}/location/{locationId}")
-//    public ResponseEntity getMemberByTypeAndLocation(
-//            @PathVariable("TypeId") String typeId,
-//            @PathVariable("locationId") String locationId
-//    ) {
-//        Member member = memberService.findMemberByTypeAndLocation(typeId,locationId);
-//        return new ResponseEntity<>(member, HttpStatus.OK);
-//    }
 
     @RequestMapping
     public ResponseEntity getMembers(
@@ -62,6 +40,6 @@ public class MemberController {
             members = memberService.getMemebers();
         }
 
-        return new ResponseEntity<>(new MultiResponseDto<>(members), HttpStatus.OK);
+        return new ResponseEntity<>(new SingleResponseDto<>(mapper.membersToMemberResponses(members)), HttpStatus.OK);
     }
 }

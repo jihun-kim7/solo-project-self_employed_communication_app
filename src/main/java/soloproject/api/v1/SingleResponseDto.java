@@ -5,10 +5,10 @@ import lombok.Getter;
 import java.util.List;
 
 @Getter
-public class MultiResponseDto<T> {
+public class SingleResponseDto<T> {
     private List<T> data;
 
-    public MultiResponseDto(List<T> data) {
+    public SingleResponseDto(List<T> data) {
         this.data = data;
     }
 }
